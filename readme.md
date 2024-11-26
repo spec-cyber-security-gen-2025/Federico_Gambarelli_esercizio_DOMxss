@@ -1,7 +1,9 @@
 Run ambiente
 - Go live del progetto principlae (index.html)
 - Prova con PHP: entrare nella cartella server_php e lanciare il server con `php -S localhost:8000`
-- Prova con node: entrare nella cartella server_node e lanciare il server con `node server.js`
+- Prova con node: entrare nella cartella server_node:
+    - lanciare `npm install` la prima volta
+    - lanciare il server con `node server.js`
 
 Hack
 In base al server in esecuzione modificare il seguente payload
